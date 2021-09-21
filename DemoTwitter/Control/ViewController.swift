@@ -17,10 +17,10 @@ class ViewController: UIViewController {
     //    MARK:- View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setVCUI()
     }
     //    MARK:- SetUI
-    func setUI() {
+    func setVCUI() {
         loginBtn.layer.cornerRadius = 20
     }
     //    MARK:- Button Action

@@ -10,15 +10,15 @@ import Foundation
 struct UserModel:Decodable {
     
     //    MARK:- Initialize Variables
-    var user_name : String?
-    var user_image : String?
-    var user_follower : Int?
-    var user_following : Int?
+    var userName : String?
+    var userImage : String?
+    var userFollower : Int?
+    var userFollowing : Int?
     
     init(user_name: String?,user_image: String?,user_follower: Int?,user_following: Int?) {
-        self.user_name = user_name
-        self.user_image = user_image
-        self.user_follower = user_follower
-        self.user_following = user_following
+        self.userName = user_name
+        self.userImage = user_image
+        self.userFollower = user_follower
+        self.userFollowing = user_following
     }
 }
