@@ -28,12 +28,12 @@ class HomeViewController: UIViewController {
     //    MARK:- View Lifecycle
     override func viewDidLoad(){
         super.viewDidLoad()
-        setVCUI()
+        setUI()
         getUserInformation()
     }
     
     //MARK:- SetUI
-    func setVCUI(){
+    func setUI(){
         imgUser.layer.cornerRadius = 40.0
         imgUser.clipsToBounds = true
         follwerView.layer.borderWidth = 0.3
