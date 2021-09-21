@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Twitter get existing session of twitter
         let arrUser = TWTRTwitter.sharedInstance().sessionStore.existingUserSessions()
 
-        self.isLogin(login: arrUser.count > 0)
+        self.isLoggedIn(login: arrUser.count > 0)
         return true
     }
 
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     //MARK:- User Defined Functions
     // Check user login status
-    func isLogin(login: Bool) {
+    func isLoggedIn(login: Bool) {
         if login {
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController

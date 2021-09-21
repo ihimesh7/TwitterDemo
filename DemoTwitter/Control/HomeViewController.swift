@@ -21,19 +21,19 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var follwingView: UIView!
     
     //    MARK:- Initialize Variables
-    var user_id = String()
-    var UserData : UserModel? = nil
+    var userId = String()
+    var userData : UserModel? = nil
     
     
     //    MARK:- View Lifecycle
     override func viewDidLoad(){
         super.viewDidLoad()
-        setUI()
-        getUserInfo()
+        setVCUI()
+        getUserInformation()
     }
     
     //MARK:- SetUI
-    func setUI(){
+    func setVCUI(){
         imgUser.layer.cornerRadius = 40.0
         imgUser.clipsToBounds = true
         follwerView.layer.borderWidth = 0.3
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
     }
     
     //MARK: API Call to get the user detail
-    func getAllData() {
+    func getAllUserData() {
         _ = UserDefaults.standard.object(forKey: "auth_token") as? String
         
         let header : HTTPHeaders = HTTPHeaders([
@@ -70,11 +70,11 @@ class HomeViewController: UIViewController {
                 let followingcount = dataDict.value(forKey: "followers_count") as? Int ?? 0
                 let friendsCount = dataDict.value(forKey: "friends_count") as? Int ?? 0
                 
-                self.UserData = UserModel(user_name: username, user_image: userimage, user_follower: followingcount, user_following: friendsCount)
+                self.userData = UserModel(user_name: username, user_image: userimage, user_follower: followingcount, user_following: friendsCount)
                 
-                self.lblUsername.text   = self.UserData?.user_name
-                self.lblUserFollower.text  = "\(self.UserData?.user_follower ?? 0)"
-                self.lblUserFollowing.text = "\(self.UserData?.user_following ?? 0)"
+                self.lblUsername.text   = self.userData?.userName
+                self.lblUserFollower.text  = "\(self.userData?.userFollower ?? 0)"
+                self.lblUserFollowing.text = "\(self.userData?.userFollowing ?? 0)"
                 ProgressHUD.dismiss()
             }catch{
                 print(responseData)
@@ -84,12 +84,12 @@ class HomeViewController: UIViewController {
     }
     
     //MARK:- Get User details
-    func getUserInfo(){
+    func getUserInformation(){
         if let userID = TWTRTwitter.sharedInstance().sessionStore.session()?.userID {
             let twitterClient = TWTRAPIClient(userID: userID)
             twitterClient.loadUser(withID: userID ) {(user, error) in
-                self.user_id = userID
-                self.getAllData()
+                self.userId = userID
+                self.getAllUserData()
                 if user != nil {
                     
                     do {
@@ -113,7 +113,7 @@ class HomeViewController: UIViewController {
                 TWTRTwitter.sharedInstance().sessionStore.logOutUserID(session.userID)
             }
         }
-        (UIApplication.shared.delegate as! AppDelegate).isLogin(login: false)
+        (UIApplication.shared.delegate as! AppDelegate).isLoggedIn(login: false)
     }
     
     //following

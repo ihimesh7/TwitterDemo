@@ -32,7 +32,7 @@ class ListOfFollowerAndFollowingVc: UIViewController,UITableViewDelegate,UITable
         
         // if Flag is 0 get Follower list Else get Friend list
         if self.flag == 0 {
-            self.getallFollower()
+            self.getallFollowersList()
         }else{
             self.getallFrienfList()
         }
@@ -90,7 +90,7 @@ class ListOfFollowerAndFollowingVc: UIViewController,UITableViewDelegate,UITable
                 
                 // if Flag is 0 get Follower list Else get Friend list
                 if self.flag == 0{
-                    self.getallFollower()
+                    self.getallFollowersList()
                 }else{
                     self.getallFrienfList()
                 }
@@ -99,7 +99,7 @@ class ListOfFollowerAndFollowingVc: UIViewController,UITableViewDelegate,UITable
     }
     
     //MARK:- Api Calling for Friend & Follower list
-    func getallFollower()
+    func getallFollowersList()
     {
         let auth_token = UserDefaults.standard.object(forKey: "auth_token") as? String
         
@@ -151,7 +151,7 @@ class ListOfFollowerAndFollowingVc: UIViewController,UITableViewDelegate,UITable
     }
     
     
-    func getallFrienfList(){
+    func getallFriendList(){
         
         let auth_token = UserDefaults.standard.object(forKey: "auth_token") as? String
         
