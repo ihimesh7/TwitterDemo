@@ -16,7 +16,7 @@ struct UserModel:Decodable {
     var userFollowing : Int?
     
     init(user_name: String?,user_image: String?,user_follower: Int?,user_following: Int?) {
-        self.userName = user_name
+        self.userName = user_namez
         self.userImage = user_image
         self.userFollower = user_follower
         self.userFollowing = user_following
